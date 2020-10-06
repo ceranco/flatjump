@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+if flatpak ps | grep -q "$1"; then
+	wmctrl -a $1
+else
+	(flatpak run $(flatpak list | grep "$1" | awk '{ print $2; }') >/dev/null 2>&1) &
+fi
