@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
-if flatpak ps | grep -q "$1"; then
-	wmctrl -a $1
+name=$1
+searchExpr="${2:-$1}"
+if flatpak ps | grep -q "$name"; then
+	windowID=`wmctrl -l | grep -m 1 "$searchExpr" | awk '{ print $1; }'`
+	wmctrl -ia $windowID
 else
-	(flatpak run $(flatpak list | grep "$1" | awk '{ print $2; }') >/dev/null 2>&1) &
+	(flatpak run $(flatpak list --columns=application,description | grep "$name" | awk '{ print $1; }') > /dev/null 2>&1) & 
+	# (flatpak run $(flatpak list | grep "$1" | awk '{ print $2; }') >/dev/null 2>&1) &
 fi

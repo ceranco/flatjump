@@ -4,10 +4,12 @@ This is a very simple script that will try to mimic the excellent [jumpapp](http
 
 The usage is simply:
 ```bash
-flatjump <NAME>
+flatjump <NAME> [<SEARCH-EXPR>]
 ```
 
 The script will search for an open flatpak application with the given name. If it finds it it will focus it, if not it will open a new instance.
+To prevent confusion between open applications that contain <NAME> in the title, you can give an optional <SEARCH-EXPR> to be used
+when searching through all open windows.
 
 ## Setup
 
