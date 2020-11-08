@@ -2,7 +2,7 @@
 name=$1
 searchExpr="${2:-$1}"
 if flatpak ps | grep -q "$name"; then
-	windowID=`wmctrl -l | grep -m 1 "$searchExpr" | awk '{ print $1; }'`
+	windowID=`wmctrl -l | grep -v "flatjump" | grep -m 1 "$searchExpr" | awk '{ print $1; }'`
 	wmctrl -ia $windowID
 else
 	(flatpak run $(flatpak list --columns=application,description | grep "$name" | awk '{ print $1; }') > /dev/null 2>&1) & 
