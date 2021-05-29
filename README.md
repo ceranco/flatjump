@@ -16,7 +16,7 @@ The script will search for an open flatpak application with the given name (case
 * If found, it will be focused. 
 * If not, a new instance will be opened.
 
-To prevent confusion between open applications that contain <NAME> in the title, you can give an optional <SEARCH-EXPR> (case-insensitive) to be used
+To prevent confusion between open applications that contain `<NAME>` in the title, you can give an optional `<SEARCH-EXPR>` (case-insensitive) to be used
 when searching through all open windows.
 
 ## Setup
